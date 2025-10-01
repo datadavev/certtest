@@ -1,15 +1,22 @@
 name: CN_Chain
-description: Take a peek at CN chain
+
 on: 
   workflow_dispatch:
 
 jobs:
-  chain:
-    name: cn chain
+  chain-windows:
+    name: cn chain windows
     runs-on: windows-latest
     steps:
       - name: script
         shell: powershell
+        run: |
+          echo "" | openssl s_client -connect cn.dataone.org:443 -showcerts | openssl crl2pkcs7 -nocrl | openssl pkcs7 -noout -print_certs
+  chain-ubuntu:
+    name: cn chain ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: script
         run: |
           echo "" | openssl s_client -connect cn.dataone.org:443 -showcerts | openssl crl2pkcs7 -nocrl | openssl pkcs7 -noout -print_certs
 
