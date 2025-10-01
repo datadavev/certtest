@@ -11,5 +11,5 @@ jobs:
       - name: script
         shell: powershell
         run: |
-          cho "" | openssl s_client -connect cn.dataone.org:443 -showcerts | openssl crl2pkcs7 -nocrl | openssl pkcs7 -noout -print_certs
+          echo "" | openssl s_client -connect cn.dataone.org:443 -showcerts | openssl crl2pkcs7 -nocrl | openssl pkcs7 -noout -print_certs
 
