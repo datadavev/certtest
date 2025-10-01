@@ -1,6 +1,7 @@
 name: CN_Chain
 description: Take a peek at CN chain
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
 
 jobs:
   chain:
@@ -9,4 +10,6 @@ jobs:
     steps:
       - name: script
         shell: powershell
-        run: | openssl
+        run: |
+          openssl
+
